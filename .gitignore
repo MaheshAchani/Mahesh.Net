@@ -1,0 +1,33 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+
+namespace MobileWCFApplication
+{
+    public partial class Display_Mobile : System.Web.UI.Page
+    {
+        Mobile_WcfServiceReference.MobileServiceClient obj_operation = new Mobile_WcfServiceReference.MobileServiceClient();
+        Mobile_WcfServiceReference.Mobilevariables obj_variables = new Mobile_WcfServiceReference.Mobilevariables();
+        protected void Page_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            obj_variables.Mno = TextBox1.Text;
+            obj_variables.Mname = TextBox2.Text;
+            obj_variables.Price = double.Parse(TextBox3.Text);
+
+            obj_operation.Display_Mobile(obj_variables);
+            
+
+            TextBox1.Text = "";
+            TextBox2.Text = "";
+            TextBox3.Text = "";
+        }
+    }
+}
